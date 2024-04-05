@@ -16,7 +16,7 @@ Run the duckdb CLI and install the spatial extensions:
 
 ### Define the bounding box:
 
-We want to get the data for the state of Florida so we need to get its bounding box first. There are several methods to get it but I prefered to get it from QGIS. As a result, I got the following bouding box:
+We want to get the data for the state of Florida so we need to get its bounding box first. There are several methods to get it but I prefered to get it using QGIS. As a result, I got the following bounding box:
 
 ```
 XMIN: -87.634643
@@ -27,7 +27,7 @@ YMAX: 31.000888
 
 ### Build the DuckDB query:
 
-I followed the example described [here](https://docs.overturemaps.org/accessing-data/example-queries/#buildings-in-detroit) the build my query that get all buildings in the state of FL and run it in the DuckDB CLI:
+I followed the example described [here](https://docs.overturemaps.org/accessing-data/example-queries/#buildings-in-detroit) to build my query that get all buildings in the state of FL and run it in the DuckDB CLI:
 
 ```sql
 -- Load the spatial extensions
@@ -37,7 +37,8 @@ LOAD httpfs;
 SET s3_region='us-west-2';
 -- Get the data into a GeoJSON file
 COPY (
-    SELECT 
+    SELECT
+    -- Columns
     id,
     type,
     version,
@@ -74,6 +75,6 @@ That gives the following output:
 
 ![image](./images/raw-content.png)
 
-I've translated it to Geopackage and loaded into QGIS the check for the spatial cover:
+I've translated it into Geopackage and loaded in QGIS to check for the spatial cover:
 
 ![image](./images/data-content.png)
