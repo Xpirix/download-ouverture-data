@@ -46,7 +46,7 @@ COPY (
     level,
     class,
     -- We need to transform these columns as they are in a Struct format
-    -- Otherwise, they will geneerate errors
+    -- Otherwise, they will generate errors
     CAST(json_extract(sources, '$') AS STRING) AS sources,
     CAST(json_extract(names, '$') AS STRING) AS names,
     height,
